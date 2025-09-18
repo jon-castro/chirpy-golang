@@ -2,10 +2,11 @@ package main
 
 import (
 	"encoding/json"
-	"github.com/jon-castro/chirpy-golang/internal/auth"
-	"github.com/jon-castro/chirpy-golang/internal/database"
 	"net/http"
 	"time"
+
+	"github.com/jon-castro/chirpy-golang/internal/auth"
+	"github.com/jon-castro/chirpy-golang/internal/database"
 )
 
 func (cfg *apiConfig) handlerLogin(w http.ResponseWriter, r *http.Request) {
@@ -63,10 +64,11 @@ func (cfg *apiConfig) handlerLogin(w http.ResponseWriter, r *http.Request) {
 
 	respondWithJson(w, http.StatusOK, response{
 		User: User{
-			ID:        user.ID,
-			Email:     user.Email,
-			CreatedAt: user.CreatedAt,
-			UpdatedAt: user.UpdatedAt,
+			ID:          user.ID,
+			Email:       user.Email,
+			CreatedAt:   user.CreatedAt,
+			UpdatedAt:   user.UpdatedAt,
+			IsChirpyRed: user.IsChirpyRed,
 		},
 		Token:        accessToken,
 		RefreshToken: refreshToken,
